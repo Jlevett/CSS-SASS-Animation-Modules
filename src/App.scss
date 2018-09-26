@@ -1,0 +1,207 @@
+//Syntactically Awesome Style Sheets
+
+//import font
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+// SASS map
+$colors: (
+  primary: darken(#3a28e2, 40%),
+  top-card: #FCE174,
+  middle-card:#DCBD43,
+  bottom-card:#C3A73B,
+  accent: #F737FE,
+  primary-text:#A41AB0,
+  stoke-text: #72367B
+);
+
+//SASS variable
+$padding: 15px;
+$borders: 15px;
+//SASS Function
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+//SASS Mixin
+$desktop: 840px;
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+body {
+  font-family: "Montserrat";
+  margin: 0;
+
+  @include desktop {
+    position: relative
+  }
+
+  //SASS Nesting Elements
+  .bg {
+    background: url('https://images.unsplash.com/photo-1496867557017-559adb93b339?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1304bcfdaa956c3acad348d06ff059e3&auto=format&fit=crop&w=1351&q=80');
+    width: 100%;
+    height: 100%;
+    background-size: auto 100%;
+    position: absolute;
+    z-index: -1;
+    clip-path: polygon(100% 0, 100% 68%, 62% 100%, 0 100%, 0 0);
+
+    @include desktop {
+        clip-path: polygon(0 0, 79% 0, 44% 100%, 0% 100%);
+    }
+  }
+
+  header a {
+    color: white;
+    text-decoration: none;
+    padding: $padding;
+    display: block;
+    text-transform: uppercase;
+  }
+}
+
+main {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+                      "card"
+                      "primary";
+
+    @include desktop {
+      grid-template-areas: "primary card";
+      grid-template-columns: 50% auto;
+      grid-template-rows:100%;
+      margin: 0;
+      position: absolute;
+      top: 30%;
+      width:100%;
+    }
+
+  section.card {
+
+    @include desktop {
+        grid-area: card;
+        height: fit-content;
+        align-self: center;
+    }
+
+    ul {
+      list-style-type: none;
+      perspective: 2000px;
+      width: 400px;
+      margin:auto;
+      padding-right:30px;
+      padding-left:0px;
+      position: relative;
+      height: 400px;
+
+      @include desktop {
+       width:400px;
+      }
+
+      li {
+        width:400px;
+        display: grid;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+                      "coinimage title"
+                      "coinimage blurb";
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        transform: rotateY(-30deg) rotateX(15deg);
+        position: absolute;
+        border-bottom: 4px solid rgba(0,0,0,.2);
+
+        strong {
+          grid-area: title;
+        }
+
+        p {
+          grid-area: blurb;
+        }
+
+        img {
+          width: 70px;
+          grid-area: coinimage;
+        }
+      }
+
+      li:nth-child(1) {
+        background-color: color(top-card); //alternative: map-get($colors, top-card);
+        top: 50px;
+        z-index:3;
+      }
+
+      li:nth-child(2) {
+        background-color: color(middle-card);
+        top: 160px;
+        z-index: 2;
+      }
+
+      li:nth-child(3) {
+        background-color: color(bottom-card);
+        top: 270px;
+        z-index: 1;
+      }
+
+      li:hover {
+        transform: rotateY(-22deg) rotateX(7deg) scale(1.10);
+        transition: transform .4s ease-out;
+        z-index: 3;
+      }
+    }
+  }
+
+  section.primary {
+    color: color(primary-text);
+    padding: $padding;
+    text-align: center;
+    grid-area: primary;
+
+    @include desktop {
+      text-align: center;
+      margin: 4em 0 0 4em;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 10px;
+      text-transform: uppercase;
+
+      @include desktop {
+          font-size: 4em;
+          line-height: .9em;
+          margin:auto;
+      }
+    }
+
+    p {
+      font-size: 2em;
+      font-weight: bolder;
+      text-shadow: -1px 0 color(stoke-text), 0 1px color(stoke-text), 1px 0 color(stoke-text), 0 -1px color(stoke-text);
+    }
+    a {
+      color: color(primary);
+      border-radius: $borders;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: color(accent);
+      display: block;
+      text-align: center;
+      margin: 50px auto 0 auto;
+      padding: $padding;
+      width:200px;
+
+      @include desktop {
+        display: inline-block;
+        padding: $padding $padding * 4; //Maths Allowed in SASS
+      }
+    }
+  }
+}

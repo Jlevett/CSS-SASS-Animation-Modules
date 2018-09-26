@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+body {
+  font-family: "Montserrat";
+  margin: 0; }
+  @media (min-width: 840px) {
+    body {
+      position: relative; } }
+  body .bg {
+    background: url("https://images.unsplash.com/photo-1496867557017-559adb93b339?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1304bcfdaa956c3acad348d06ff059e3&auto=format&fit=crop&w=1351&q=80");
+    width: 100%;
+    height: 100%;
+    background-size: auto 100%;
+    position: absolute;
+    z-index: -1;
+    clip-path: polygon(100% 0, 100% 68%, 62% 100%, 0 100%, 0 0); }
+    @media (min-width: 840px) {
+      body .bg {
+        clip-path: polygon(0 0, 79% 0, 44% 100%, 0% 100%); } }
+  body header a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-transform: uppercase; }
+
+main {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas: "card" "primary"; }
+  @media (min-width: 840px) {
+    main {
+      grid-template-areas: "primary card";
+      grid-template-columns: 50% auto;
+      grid-template-rows: 100%;
+      margin: 0;
+      position: absolute;
+      top: 30%;
+      width: 100%; } }
+  @media (min-width: 840px) {
+    main section.card {
+      grid-area: card;
+      height: fit-content;
+      align-self: center; } }
+  main section.card ul {
+    list-style-type: none;
+    perspective: 2000px;
+    width: 400px;
+    margin: auto;
+    padding-right: 30px;
+    padding-left: 0px;
+    position: relative;
+    height: 400px; }
+    @media (min-width: 840px) {
+      main section.card ul {
+        width: 400px; } }
+    main section.card ul li {
+      width: 400px;
+      display: grid;
+      grid-template-columns: 20% 80%;
+      grid-template-rows: auto auto;
+      grid-template-areas: "coinimage title" "coinimage blurb";
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transform: rotateY(-30deg) rotateX(15deg);
+      position: absolute;
+      border-bottom: 4px solid rgba(0, 0, 0, 0.2); }
+      main section.card ul li strong {
+        grid-area: title; }
+      main section.card ul li p {
+        grid-area: blurb; }
+      main section.card ul li img {
+        width: 70px;
+        grid-area: coinimage; }
+    main section.card ul li:nth-child(1) {
+      background-color: #FCE174;
+      top: 50px;
+      z-index: 3; }
+    main section.card ul li:nth-child(2) {
+      background-color: #DCBD43;
+      top: 160px;
+      z-index: 2; }
+    main section.card ul li:nth-child(3) {
+      background-color: #C3A73B;
+      top: 270px;
+      z-index: 1; }
+    main section.card ul li:hover {
+      transform: rotateY(-22deg) rotateX(7deg) scale(1.1);
+      transition: transform .4s ease-out;
+      z-index: 3; }
+  main section.primary {
+    color: #A41AB0;
+    padding: 15px;
+    text-align: center;
+    grid-area: primary; }
+    @media (min-width: 840px) {
+      main section.primary {
+        text-align: center;
+        margin: 4em 0 0 4em; } }
+    main section.primary h1 {
+      font-size: 3em;
+      margin-top: 10px;
+      text-transform: uppercase; }
+      @media (min-width: 840px) {
+        main section.primary h1 {
+          font-size: 4em;
+          line-height: .9em;
+          margin: auto; } }
+    main section.primary p {
+      font-size: 2em;
+      font-weight: bolder;
+      text-shadow: -1px 0 #72367B, 0 1px #72367B, 1px 0 #72367B, 0 -1px #72367B; }
+    main section.primary a {
+      color: #0c0737;
+      border-radius: 15px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: #F737FE;
+      display: block;
+      text-align: center;
+      margin: 50px auto 0 auto;
+      padding: 15px;
+      width: 200px; }
+      @media (min-width: 840px) {
+        main section.primary a {
+          display: inline-block;
+          padding: 15px 60px; } }
