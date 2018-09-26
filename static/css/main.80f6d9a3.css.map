@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,eAGE,WAAa","file":"static/css/main.80f6d9a3.css","sourcesContent":["body,\r\nhtml,\r\n.App {\r\n  height: 100%;\r\n}\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
