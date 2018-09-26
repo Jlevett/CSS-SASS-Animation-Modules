@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import styles from "./AutoPrefixApp.css";
+import styles from "./AutoPrefixApp.module.css";
 
 import AppCoins from './imgs/AppCoins.svg';
 import Ethos from './imgs/Ethos.svg';
@@ -10,12 +10,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className='bg'/>
+        <div className={styles.bg}/>
         <header>
           <a href="#">Cyrpto World</a>
         </header>
         <main>
-          <section className="card">
+          <section className={styles.card}>
               <ul>
                 {App.coins.map((coinName, index) => (
                    <li key={index}>
@@ -27,7 +27,7 @@ class App extends Component {
               </ul>
           </section>
 
-          <section className="primary">
+          <section className={styles.primary}>
               <h1>Make Money</h1>
               <p> What are you waiting for</p>
               <a href="#">Click Here to start</a>

@@ -10,24 +10,28 @@
     "postcss-nested": "^4.1.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-scripts-cssmodules": "^1.1.50"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "build:css": "postcss src/App.css -o src/AutoPrefixApp.css",
-    "watch:css": "postcss src/App.css -o src/AutoPrefixApp.css -w",
+    "build:css": "postcss src/App.css -o src/AutoPrefixApp.module.css",
+    "watch:css": "postcss src/App.css -o src/AutoPrefixApp.module.css -w",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css watch:css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build:css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "eslint": "^5.6.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1"
+    "eslint-plugin-react": "^7.11.1",
+    "gh-pages": "^2.0.0"
   }
 }
